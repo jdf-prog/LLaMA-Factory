@@ -135,6 +135,7 @@ class CustomDPOTrainer(DPOTrainer):
         gamma_logratios = self.simpo_gamma / self.beta
         logits = pi_logratios - gamma_logratios
         simpo_loss = -F.logsigmoid(self.beta * logits)
+        simpo_loss += chosen_logps
         return simpo_loss
 
     def compute_preference_loss(

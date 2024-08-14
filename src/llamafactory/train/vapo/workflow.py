@@ -41,7 +41,7 @@ def run_vapo(
 ):
     tokenizer_module = load_tokenizer(model_args)
     tokenizer = tokenizer_module["tokenizer"]
-    dataset_module = get_dataset(model_args, data_args, training_args, stage="rm", **tokenizer_module)
+    dataset_module = get_dataset(model_args, data_args, training_args, stage="vapo", **tokenizer_module)
     model = load_model(tokenizer, model_args, finetuning_args, training_args.do_train)
 
     data_collator = PairwiseDataCollatorWithPadding(

@@ -17,6 +17,7 @@ from typing import TYPE_CHECKING, Callable, Literal, Optional, Tuple
 
 from .processors.feedback import preprocess_feedback_dataset
 from .processors.pairwise import preprocess_pairwise_dataset, print_pairwise_dataset_example
+from .processors.vapo import preprocess_vapo_dataset, print_vapo_dataset_example
 from .processors.pretrain import preprocess_pretrain_dataset
 from .processors.supervised import (
     preprocess_packed_supervised_dataset,
@@ -88,6 +89,15 @@ def get_preprocess_and_print_func(
             data_args=data_args,
         )
         print_function = partial(print_pairwise_dataset_example, tokenizer=tokenizer)
+    elif stage == "vapo":
+        preprocess_func = partial(
+            preprocess_vapo_dataset,
+            template=template,
+            tokenizer=tokenizer,
+            processor=processor,
+            data_args=data_args,
+        )
+        print_function = partial(print_vapo_dataset_example, tokenizer=tokenizer)
     elif stage == "kto":
         preprocess_func = partial(
             preprocess_feedback_dataset,

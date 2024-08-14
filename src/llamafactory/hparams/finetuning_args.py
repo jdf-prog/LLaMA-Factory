@@ -140,7 +140,7 @@ class RLHFArguments:
         default=0.0,
         metadata={"help": "The supervised fine-tuning loss coefficient in DPO training."},
     )
-    pref_loss: Literal["sigmoid", "hinge", "ipo", "kto_pair", "orpo", "simpo"] = field(
+    pref_loss: Literal["sigmoid", "hinge", "ipo", "kto_pair", "orpo", "simpo", "simpo_sft"] = field(
         default="sigmoid",
         metadata={"help": "The type of DPO loss to use."},
     )
@@ -314,7 +314,7 @@ class FinetuningArguments(FreezeArguments, LoraArguments, RLHFArguments, GaloreA
         default=False,
         metadata={"help": "Whether or not to train model in purely bf16 precision (without AMP)."},
     )
-    stage: Literal["pt", "sft", "rm", "ppo", "dpo", "kto"] = field(
+    stage: Literal["pt", "sft", "rm", "ppo", "dpo", "kto", "vapo"] = field(
         default="sft",
         metadata={"help": "Which stage will be performed in training."},
     )

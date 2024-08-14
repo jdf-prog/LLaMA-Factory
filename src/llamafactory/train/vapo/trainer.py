@@ -194,6 +194,8 @@ class CustomVAPOTrainer(DPOTrainer):
         all_logits: "torch.Tensor" = model(**batch, return_dict=True, use_cache=False).logits.to(torch.float32)
 
         all_logps, valid_length = get_batch_logps(logits=all_logits, labels=batch["labels"])
+        # clip valid_length to be at least 1
+        valid_length = torch.clip(valid_length, min=1)
         if self.loss_type in ["ipo", "orpo", "simpo"]:
             all_logps = all_logps / valid_length
 

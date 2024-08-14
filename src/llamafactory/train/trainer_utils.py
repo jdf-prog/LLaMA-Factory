@@ -418,7 +418,6 @@ def get_batch_logps(
     """
     if logits.shape[:-1] != labels.shape:
         raise ValueError("Logits (batchsize x seqlen) and labels must have the same shape.")
-
     labels = labels[:, 1:].clone()
     logits = logits[:, :-1, :]
     loss_mask = labels != label_pad_token_id

@@ -69,6 +69,8 @@ def _encode_pairwise_example(
     chosen_label_indices, rejected_label_indices = get_diff_label_indices(chosen_ids, rejected_ids)
     chosen_labels[len(prompt_ids):][chosen_label_indices] = [chosen_ids[i] for i in chosen_label_indices]
     rejected_labels[len(prompt_ids):][rejected_label_indices] = [rejected_ids[i] for i in rejected_label_indices]
+    # or consider to use full labels for chosen ids
+    # chosen_labels = [IGNORE_INDEX] * source_len + chosen_ids
 
     chosen_labels = chosen_labels.tolist()
     rejected_labels = rejected_labels.tolist()

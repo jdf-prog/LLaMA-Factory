@@ -148,7 +148,7 @@ class CustomVAPOTrainer(DPOTrainer):
         gamma_logratios = self.simpo_gamma / self.beta
         logits = pi_logratios - gamma_logratios
         simpo_loss = -F.logsigmoid(self.beta * logits)
-        simpo_loss += chosen_logps
+        simpo_loss -= chosen_logps
         return simpo_loss
 
     def compute_preference_loss(
@@ -266,6 +266,8 @@ class CustomVAPOTrainer(DPOTrainer):
         metrics["{}logps/chosen".format(prefix)] = policy_chosen_logps.detach().mean().cpu()
         metrics["{}logits/rejected".format(prefix)] = policy_rejected_logits.detach().mean().cpu()
         metrics["{}logits/chosen".format(prefix)] = policy_chosen_logits.detach().mean().cpu()
+        metrics["{}logits/accuracies".format(prefix)] = (policy_chosen_logits > policy_rejected_logits).float().mean().cpu()
+        metrics["{}logits/margins".format(prefix)] = (policy_chosen_logits - policy_rejected_logits).mean().cpu()
         if self.loss_type == "orpo":
             metrics["{}sft_loss".format(prefix)] = sft_loss.detach().mean().cpu()
             metrics["{}odds_ratio_loss".format(prefix)] = ((losses - sft_loss) / self.beta).detach().mean().cpu()

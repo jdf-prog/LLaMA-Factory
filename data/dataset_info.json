@@ -704,5 +704,19 @@
       "prompt": "content"
     },
     "folder": "python"
+  },
+  "interpreter_thinking": {
+    "hf_hub_url": "VerlTool/Interpreter-Thinking",
+    "formatting": "sharegpt",
+    "subset": "valid",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
   }
 }

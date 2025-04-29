@@ -718,5 +718,19 @@
       "user_tag": "user",
       "assistant_tag": "assistant"
     }
+  },
+  "interpreter_thinking_tool": {
+    "hf_hub_url": "VerlTool/Interpreter-Thinking",
+    "formatting": "sharegpt",
+    "subset": "valid_tool",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
   }
 }

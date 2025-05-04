@@ -732,5 +732,20 @@
       "user_tag": "user",
       "assistant_tag": "assistant"
     }
+  },
+  "openmathreasoning_tir_100K": {
+    "hf_hub_url": "VerlTool/openmathreasoning_tir_100K",
+    "formatting": "sharegpt",
+    "subset": "default",
+    "columns": {
+      "messages": "message"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
   }
 }

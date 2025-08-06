@@ -714,5 +714,20 @@
       "prompt": "content"
     },
     "folder": "python"
+  },
+  "pixel_reasoner": {
+    "file_name": "pixel_reasoner_sft_data/processed_data.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
   }
 }
